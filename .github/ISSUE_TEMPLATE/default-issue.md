@@ -1,3 +1,12 @@
+---
+name: default issue template
+about: 기본 이슈 템플릿
+title: ''
+labels: ''
+assignees: ''
+
+---
+
 # 🌈 Success criteria
 
 # 👷To-do
