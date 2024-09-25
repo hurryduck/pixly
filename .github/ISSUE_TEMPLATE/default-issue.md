@@ -1,6 +1,6 @@
 ---
-name: default issue template
-about: 기본 이슈 템플릿
+name: 기본 이슈 템플릿
+about: create default issue template
 title: ''
 labels: ''
 assignees: ''
