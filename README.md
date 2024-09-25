@@ -1,1 +1,1 @@
-# AI-Deep-MiniProject
+# Pixly
