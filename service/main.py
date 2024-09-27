@@ -56,8 +56,11 @@ def read_root():
     return {"message": "Hello, FastAPI!"}
 
 @app.post("/workflow/test")
-async def test(workflow_request : WorkflowRequest):
+async def test():
     try:
+        with (open("./workflow/test_api.json", "r", encoding="utf-8")) as f:
+            workflow_request = WorkflowRequest(workflow=json.loads(f.read()))
+
         prompt_id = queue_prompt(workflow_request.workflow, COMFYUI_URL)
         result = await check_progress(prompt_id, COMFYUI_URL)      
     
