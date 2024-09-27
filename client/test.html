@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test client</title>
+
+    <style>
+        .test-box {
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #dfffdf;
+        }
+    </style>
+</head>
+<body>
+    <h1>api test</h1>
+
+    <div id="test" class="test-box">
+        <h2>test by http://127.0.0.1:8000/</h2>
+        <p>result: <span class="result"></span></p>
+        <button type="button" class="test-btn">connect test</button>
+    </div>
+
+    <script>
+        document.querySelector("#test .test-btn").addEventListener("click", function() {
+            const $result = document.querySelector("#test .result");
+            console.log($result);
+
+            fetch("http://127.0.0.1:8000/")
+                .then(response => response.json())
+                .then(data => {
+                    $result.textContent = data.message
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
