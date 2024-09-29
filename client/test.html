@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test client</title>
+
+    <style>
+        .test-box {
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #dfffdf;
+        }
+    </style>
+</head>
+<body>
+    <h1>api test</h1>
+
+    <div id="test" class="test-box">
+        <h2>test by http://127.0.0.1:8000/</h2>
+        <p>result: <span class="result"></span></p>
+        <button type="button" class="test-btn">connect test</button>
+    </div>
+
+    <div id="api-test" class="test-box">
+        <h2>test by http://127.0.0.1:8000/workflow/test</h2>
+        <p>result: <span class="result"></span></p>
+        <div>
+            <img src="" alt="결과 이미지">
+        </div>
+        <button type="button" class="test-btn">connect test</button>
+    </div>
+
+    <script>
+        const COMFYUI_SERVER_URL = "http://127.0.0.1:8000/"
+
+        document.querySelector("#test .test-btn").addEventListener("click", function() {
+            const $result = document.querySelector("#test .result");
+
+            fetch(COMFYUI_SERVER_URL)
+                .then(response => response.json())
+                .then(data => {
+                    $result.textContent = data.message
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        document.querySelector("#api-test .test-btn").addEventListener("click", async function() {
+            const $result = document.querySelector("#api-test .result");
+            const $resultImg = document.querySelector("#api-test img");
+
+            try {
+                const response = await fetch(COMFYUI_SERVER_URL + "workflow/test");
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                const data = await response.json();
+                $result.textContent = data.status;
+                $resultImg.src = data.image;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+
+    </script>
+</body>
+</html>
