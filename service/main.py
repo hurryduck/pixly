@@ -55,7 +55,7 @@ async def check_progress(prompt_id: str, ip: str):
 def read_root():
     return {"message": "Hello, FastAPI!"}
 
-@app.post("/workflow/test")
+@app.get("/workflow/test")
 async def test():
     try:
         with (open("./workflow/test_api.json", "r", encoding="utf-8")) as f:
@@ -80,3 +80,10 @@ async def test():
         raise e
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+# Uvicorn 실행
+import uvicorn
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
