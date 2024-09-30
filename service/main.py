@@ -5,6 +5,8 @@ from urllib import request
 import asyncio
 from fastapi.middleware.cors import CORSMiddleware
 import os
+from fastapi import FastAPI, Request
+import logging
 
 app = FastAPI()
 
@@ -120,7 +122,6 @@ async def cloth(img_model: UploadFile = File(...), img_product: UploadFile = Fil
         raise e
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
 
 # Uvicorn 실행
 import uvicorn
