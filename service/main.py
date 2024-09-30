@@ -1,9 +1,10 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, File, UploadFile
 from pydantic import BaseModel
 import json
 from urllib import request
 import asyncio
 from fastapi.middleware.cors import CORSMiddleware
+import os
 
 app = FastAPI()
 
@@ -75,6 +76,45 @@ async def test():
             return {"status": "completed", "image": final_image_url}
         else:
             return {"status": "completed", "image": None}
+        
+    except HTTPException as e:
+        raise e
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+@app.post("/workflow/cloth")
+async def cloth(img_model: UploadFile = File(...), img_product: UploadFile = File(...)):
+    try:
+        # 이미지를 저장할 경로 설정
+        for img in [img_model, img_product]:
+            image_path = f"./ComfyUI/input/{img.filename}"
+            with open(image_path, "wb") as f:
+                f.write(await img.read())
+
+        # 저장된 이미지 경로를 워크플로우에 포함
+        with (open("./workflow/cloth_api.json", "r", encoding="utf-8")) as f:
+            workflow_request = WorkflowRequest(workflow=json.loads(f.read()))
+
+        # 이미지 경로를 워크플로우에 추가
+        workflow_request.workflow["3"]["inputs"]["image"] = img_model.filename
+        workflow_request.workflow["4"]["inputs"]["image"] = img_product.filename
+
+        # ComfyUI에 워크플로우 전송
+        prompt_id = queue_prompt(workflow_request.workflow, COMFYUI_URL)
+        result = await check_progress(prompt_id, COMFYUI_URL)
+
+        # 결과에서 마지막 이미지 URL 추출
+        final_image_url = None
+        for node_id, node_output in result['outputs'].items():
+            if 'images' in node_output:
+                for image in node_output['images']:
+                    final_image_url = f"http://{COMFYUI_URL}/view?filename={image['filename']}&type=temp"
+
+        # 반환할 이미지 URL
+        if final_image_url:
+            return {"status": "completed", "images": final_image_url}
+        else:
+            return {"status": "completed", "images": None}
         
     except HTTPException as e:
         raise e

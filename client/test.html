@@ -32,6 +32,17 @@
         <button type="button" class="test-btn">connect test</button>
     </div>
 
+    <div id="api-cloth" class="test-box">
+        <h2>test by http://127.0.0.1:8000/workflow/cloth</h2>
+        <input type="file" id="model-image" accept="image/*">
+        <input type="file" id="product-image" accept="image/*">
+        <p>result: <span class="result"></span></p>
+        <div>
+            <img src="" alt="결과 이미지">
+        </div>
+        <button type="button" class="test-btn">connect test</button>
+    </div>
+
     <script>
         const COMFYUI_SERVER_URL = "http://127.0.0.1:8000/"
 
@@ -65,6 +76,37 @@
             }
         });
 
+        document.querySelector("#api-cloth .test-btn").addEventListener("click", async function() {
+            const $result = document.querySelector("#api-cloth .result");
+            const $resultImg = document.querySelector("#api-cloth img");
+            const $modelInput = document.querySelector("#api-cloth #model-image");
+            const $productInput = document.querySelector("#api-cloth #product-image");
+
+            try {
+                // FormData 객체 생성
+                const formData = new FormData();
+                
+                // 모델 이미지와 제품 이미지를 FormData에 추가
+                formData.append("img_model", $modelInput.files[0]);
+                formData.append("img_product", $productInput.files[0]);
+
+                const response = await fetch(COMFYUI_SERVER_URL + "workflow/cloth", {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                const data = await response.json();
+                $result.textContent = data.status;
+                $resultImg.src = data.images;  // 'image'가 아닌 'images'로 변경
+            } catch (error) {
+                console.error('Error:', error);
+                $result.textContent = "Error: " + error.message;
+            }
+        });
     </script>
 </body>
 </html>
