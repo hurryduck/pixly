@@ -40,6 +40,11 @@
             background-color: #05060B;
         }
 
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
         /* 헤더 스타일 */
         header {
             display: flex;
@@ -683,43 +688,15 @@
 
                 <!-- 상품 이미지 그리드 -->
                 <div id="productImages" class="product-grid active">
-                    <img src="service-images/tab1/1.jpg" alt="Product 1"
-                        onclick="selectImage(this, 'service-images/tab1/1.jpg', 'tab1')">
-                    <img src="service-images/tab1/2.jpg" alt="Product 2"
-                        onclick="selectImage(this, 'service-images/tab1/2.jpg', 'tab1')">
-                    <img src="service-images/tab1/3.jpg" alt="Product 2"
-                        onclick="selectImage(this, 'service-images/tab1/3.jpg', 'tab1')">
-                    <img src="service-images/tab1/4.jpg" alt="Product 2"
-                        onclick="selectImage(this, 'service-images/tab1/4.jpg', 'tab1')">
-                    <img src="service-images/tab1/5.jpg" alt="Product 2"
-                        onclick="selectImage(this, 'service-images/tab1/5.jpg', 'tab1')">
-                    <img src="service-images/tab1/6.jpg" alt="Product 2"
-                        onclick="selectImage(this, 'service-images/tab1/6.jpg', 'tab1')">
-                    <img src="service-images/tab1/7.jpg" alt="Product 2"
-                        onclick="selectImage(this, 'service-images/tab1/7.jpg', 'tab1')">
-                    <img src="service-images/tab1/8.jpg" alt="Product 2"
-                        onclick="selectImage(this, 'service-images/tab1/8.jpg', 'tab1')">
+                    <img src="service-images/tab1/img-cloth.jpg" alt="Product 2"
+                        onclick="selectImage(this, 'service-images/tab1/img-cloth.jpg', 'tab1')">
 
                 </div>
 
                 <!-- 인플루언서 이미지 그리드 -->
                 <div id="influencerImages" class="product-grid">
-                    <img src="service-images/tab2/1.jpg" alt="Influencer 1"
-                        onclick="selectImage(this, 'service-images/tab2/1.jpg', 'tab2')">
-                    <img src="service-images/tab2/2.jpg" alt="Influencer 2"
-                        onclick="selectImage(this, 'service-images/tab2/2.jpg', 'tab2')">
-                    <img src="service-images/tab2/3.jpg" alt="Influencer 1"
-                        onclick="selectImage(this, 'service-images/tab2/3.jpg', 'tab2')">
-                    <img src="service-images/tab2/4.jpg" alt="Influencer 2"
-                        onclick="selectImage(this, 'service-images/tab2/4.jpg', 'tab2')">
-                    <img src="service-images/tab2/5.jpg" alt="Influencer 1"
-                        onclick="selectImage(this, 'service-images/tab2/5.jpg', 'tab2')">
-                    <img src="service-images/tab2/6.jpg" alt="Influencer 2"
-                        onclick="selectImage(this, 'service-images/tab2/6.jpg', 'tab2')">
-                    <img src="service-images/tab2/7.jpg" alt="Influencer 1"
-                        onclick="selectImage(this, 'service-images/tab2/7.jpg', 'tab2')">
-                    <img src="service-images/tab2/8.jpg" alt="Influencer 2"
-                        onclick="selectImage(this, 'service-images/tab2/8.jpg', 'tab2')">
+                    <img src="service-images/tab2/baekjongwon.jpg" alt="Influencer 2"
+                        onclick="selectImage(this, 'service-images/tab2/baekjongwon.jpg', 'tab2')">
                 </div>
             </aside>
 
@@ -776,192 +753,170 @@
     </div>
 
     <script>
-        let selectedFromTab1 = false; // 탭1에서 선택 여부
-        let selectedFromTab2 = false; // 탭2에서 선택 여부
+        const COMFYUI_SERVER_URL = "http://127.0.0.1:8000/"
+
+        // 전역 변수 선언
+        let selectedFromTab1 = false;
+        let selectedFromTab2 = false;
 
         function selectImage(element, imageSrc, tab) {
-            var selectedImage1 = document.getElementById('selectedImage1');
-            var selectedImage2 = document.getElementById('selectedImage2');
+            const selectedImage1 = document.getElementById('selectedImage1');
+            const selectedImage2 = document.getElementById('selectedImage2');
 
-            // 상품 이미지가 비어 있으면 상품 이미지 탭으로 이동
-            if (tab === 'tab1' && selectedImage1.innerHTML.includes('상품 이미지를<br>넣어주세요')) {
-                selectedImage1.innerHTML = '<img src="' + imageSrc + '" alt="Selected Image">';
-                element.classList.add('clicked'); // 클릭된 상태 유지
-                element.style.opacity = '1';      // 클릭된 이미지가 사라지지 않도록 처리
-            }
-            // 연예인 이미지가 비어 있으면 연예인 이미지 탭으로 이동
-            else if (tab === 'tab2' && selectedImage2.innerHTML.includes('연예인 이미지를<br>넣어주세요')) {
-                selectedImage2.innerHTML = '<img src="' + imageSrc + '" alt="Selected Image">';
-                element.classList.add('clicked'); // 클릭된 상태 유지
-                element.style.opacity = '1';      // 클릭된 이미지가 사라지지 않도록 처리
+            if (tab === 'tab1' && !selectedFromTab1) {
+                selectedImage1.innerHTML = `<img src="${imageSrc}" alt="Selected Image">`;
+                selectedFromTab1 = true;
+            } else if (tab === 'tab2' && !selectedFromTab2) {
+                selectedImage2.innerHTML = `<img src="${imageSrc}" alt="Selected Image">`;
+                selectedFromTab2 = true;
             } else {
-                alert("한 장의 사진만 선택할 수 있습니다.");
+                alert("각 탭에서 한 장의 사진만 선택할 수 있습니다.");
+                return;
             }
 
-            // 사이드바의 다른 이미지들은 그대로 유지되도록 처리
-            var productGridImages = document.querySelectorAll('.product-grid img');
-            productGridImages.forEach(function (img) {
-                if (img !== element) {
-                    img.style.opacity = '1'; // 다른 이미지는 그대로 유지
-                }
-            });
+            element.classList.add('clicked');
         }
 
-
         function removeImage(imageId, tab) {
-            var selectedImageDiv = document.getElementById(imageId);
-
-            if (selectedImageDiv.innerHTML !== '') {
-                var confirmDelete = confirm("이미지를 삭제하시겠어요? Y/N");
+            const selectedImageDiv = document.getElementById(imageId);
+            if (selectedImageDiv.querySelector('img')) {
+                const confirmDelete = confirm("이미지를 삭제하시겠어요? Y/N");
                 if (confirmDelete) {
-                    var imgSrc = selectedImageDiv.querySelector('img') ? selectedImageDiv.querySelector('img').src : null;
-                    // 왼쪽 사이드바에서 동일한 이미지 복원 (클릭 가능하게 변경)
-                    var clickedImages = document.querySelectorAll('.product-grid img');
-                    clickedImages.forEach(function (img) {
+                    const imgSrc = selectedImageDiv.querySelector('img').src;
+                    document.querySelectorAll('.product-grid img').forEach(img => {
                         if (img.src === imgSrc) {
-                            img.classList.remove('clicked'); // 클릭 가능하게 변경
+                            img.classList.remove('clicked');
                         }
                     });
                     if (tab === 'tab1') {
                         selectedImageDiv.innerHTML = '상품 이미지를<br>넣어주세요';
-                        selectedFromTab1 = false; // 탭1 선택 상태 초기화
+                        selectedFromTab1 = false;
                     } else if (tab === 'tab2') {
                         selectedImageDiv.innerHTML = '연예인 이미지를<br>넣어주세요';
-                        selectedFromTab2 = false; // 탭2 선택 상태 초기화
+                        selectedFromTab2 = false;
                     }
                 }
             }
         }
 
         function openTab(tabName) {
-            var i, tabcontent, tablinks;
+            const tabcontents = document.getElementsByClassName("product-grid");
+            const tablinks = document.getElementsByClassName("tablinks");
 
-            // 모든 product-grid 요소를 가져와서 숨김 처리
-            tabcontent = document.getElementsByClassName("product-grid");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].classList.remove('active'); // active 클래스 제거
-                tabcontent[i].style.display = "none"; // 그리드 숨김
-            }
+            Array.from(tabcontents).forEach(tab => {
+                tab.style.display = "none";
+                tab.classList.remove('active');
+            });
 
-            // 모든 탭 버튼에서 active 클래스를 제거
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
+            Array.from(tablinks).forEach(link => link.classList.remove("active"));
 
-            // 선택된 탭을 표시하고 active 클래스 추가
-            document.getElementById(tabName).style.display = "grid"; // 선택된 탭 보이기
-            document.getElementById(tabName).classList.add('active'); // active 클래스 추가
-            event.currentTarget.classList.add("active"); // 현재 선택된 버튼에 active 클래스 추가
+            document.getElementById(tabName).style.display = "grid";
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add("active");
         }
 
-
-
-        function changeImage(imageSrc) {
-            var previewImage = document.getElementById('preview-image');
-            previewImage.src = imageSrc;
-        }
-
-        // 빈 이미지 클릭 시 해당 탭으로 이동
         function checkAndSwitchTab(tab, tabContentId) {
-            var selectedImage = document.getElementById(tab === 'tab1' ? 'selectedImage1' : 'selectedImage2');
+            const selectedImage = document.getElementById(tab === 'tab1' ? 'selectedImage1' : 'selectedImage2');
             if (selectedImage.innerHTML.includes(tab === 'tab1' ? '상품 이미지를<br>넣어주세요' : '연예인 이미지를<br>넣어주세요')) {
                 openTab(tabContentId);
                 document.getElementById(tab === 'tab1' ? 'tab1-btn' : 'tab2-btn').click();
             }
         }
 
-        function generateImage() {
-            var selectedImage1 = document.getElementById('selectedImage1');
-            var selectedImage2 = document.getElementById('selectedImage2');
-            var ballContainer = document.querySelector('.ball-container');
-            var imagePreviewDiv = document.querySelector('.image-preview');
-            var imagePlaceholder = document.getElementById('image-placeholder'); // 이미지 생성 텍스트
-            var loadingText = document.createElement('p'); // "이미지 생성중" 텍스트 생성
+        async function generateImage() {
+            const selectedImage1 = document.getElementById('selectedImage1');
+            const selectedImage2 = document.getElementById('selectedImage2');
+            const ballContainer = document.querySelector('.ball-container');
+            const imagePreviewDiv = document.querySelector('.image-preview');
+            const imagePlaceholder = document.getElementById('image-placeholder');
+            const loadingText = document.createElement('p');
             loadingText.id = 'loading-text';
             loadingText.innerText = '이미지 생성중...';
-            loadingText.style.marginTop = '-30px'; // 간격 추가
+            loadingText.style.marginTop = '-30px';
 
-            // 두 개의 이미지가 모두 선택되었는지 확인
-            if (!selectedImage1.innerHTML.includes('상품 이미지를<br>넣어주세요') &&
-                !selectedImage2.innerHTML.includes('연예인 이미지를<br>넣어주세요')) {
+            if (!selectedFromTab1 || !selectedFromTab2) {
+                alert('상품 이미지와 연예인 이미지를 모두 선택해주세요.');
+                return;
+            }
 
-                // "이미지 생성하기 버튼을 눌러주세요" 텍스트 숨기기
+            try {
                 imagePlaceholder.style.display = 'none';
-
-                // ball-container를 5초 동안 보이게 하기
                 ballContainer.style.display = 'grid';
-
-                // "이미지 생성중..." 텍스트를 ball-container 바로 아래에 추가
                 ballContainer.insertAdjacentElement('afterend', loadingText);
 
-                // 5초 후에 ball-container 숨기고 이미지 및 필터 텍스트 변경
-                setTimeout(function () {
+                const formData = new FormData();
+                const modelImage = await fetch(selectedImage2.querySelector('img').src).then(res => res.blob());
+                const productImage = await fetch(selectedImage1.querySelector('img').src).then(res => res.blob());
+
+                formData.append("img_model", modelImage, "baekjongwon.jpg"); // Blob 추가
+                formData.append("img_product", productImage, "img-cloth.jpg"); // Blob 추가
+                
+                const response = await fetch(COMFYUI_SERVER_URL + "workflow/cloth", {
+                    method: 'POST',
+                    headers: {
+                        'Accept' : '*/*'
+                    },
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+
+                setTimeout(() => {
                     ballContainer.style.display = 'none';
-                    loadingText.remove(); // "이미지 생성중..." 텍스트 제거
-                }, 5000); // 5초 후에 실행
-            } else {
-                // 이미지가 모두 선택되지 않았을 경우 경고 메시지
-                alert('상품 이미지와 연예인 이미지를 모두 선택해주세요.');
+                    loadingText.remove();
+
+                    if (data.status === "completed" && data.images) {
+                        const resultImg = document.createElement('img');
+                        resultImg.src = data.images;
+                        resultImg.alt = "Generated Image";
+                        imagePreviewDiv.innerHTML = '';
+                        imagePreviewDiv.appendChild(resultImg);
+                    } else {
+                        throw new Error('Image generation failed');
+                    }
+                }, 5000);
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert(`오류가 발생했습니다: ${error.message}`);
+                ballContainer.style.display = 'none';
+                loadingText.remove();
+                imagePlaceholder.style.display = 'block';
             }
         }
-
-        // 우측 사이드바 이미지 클릭 시 경고창
-        document.getElementById('selectedImage1').addEventListener('click', function () {
-            if (this.querySelector('img')) {
-                removeImage('selectedImage1', 'tab1');
-            }
-        });
-
-        document.getElementById('selectedImage2').addEventListener('click', function () {
-            if (this.querySelector('img')) {
-                removeImage('selectedImage2', 'tab2');
-            }
-        });
-
-        // 사이드바는 세로 스크롤, 필터 이미지는 가로 스크롤
-        document.addEventListener('DOMContentLoaded', function () {
-            const sidebarContainer = document.querySelector('.product-grid'); // 사이드바
-            const filterContainer = document.querySelector('.filter-image-container'); // 중앙 필터
-
-            enableDragScroll(sidebarContainer, true); // 세로 스크롤 적용
-            enableDragScroll(filterContainer, false); // 가로 스크롤 적용
-        });
-
-
 
         function downloadImage() {
-            // image-preview 안에 있는 이미지를 찾습니다
-            var imagePreview = document.querySelector('.image-preview img');
-
-            // 이미지가 있는지 확인
+            const imagePreview = document.querySelector('.image-preview img');
             if (imagePreview) {
-                var imageUrl = imagePreview.src;
-
-                // 이미지를 Blob으로 변환하여 다운로드 처리
-                fetch(imageUrl)
-                    .then(function (response) {
-                        return response.blob();
-                    })
-                    .then(function (blob) {
-                        var blobUrl = URL.createObjectURL(blob);
-
-                        // 다운로드를 위한 가상 링크(a 태그) 생성
-                        var link = document.createElement('a');
+                fetch(imagePreview.src)
+                    .then(response => response.blob())
+                    .then(blob => {
+                        const blobUrl = URL.createObjectURL(blob);
+                        const link = document.createElement('a');
                         link.href = blobUrl;
-                        link.download = 'downloaded-image.jpg'; // 다운로드할 파일 이름 설정
+                        link.download = 'generated-image.jpg';
                         document.body.appendChild(link);
                         link.click();
-                        document.body.removeChild(link); // 다운로드 후 링크 제거
-                        URL.revokeObjectURL(blobUrl); // 메모리에서 Blob URL 해제
+                        document.body.removeChild(link);
+                        URL.revokeObjectURL(blobUrl);
                     })
-                    .catch(function (error) {
-                        console.error('이미지 다운로드에 실패했습니다:', error);
-                    });
+                    .catch(error => console.error('이미지 다운로드에 실패했습니다:', error));
             } else {
-                alert("이미지가 없습니다.");
+                alert("다운로드할 이미지가 없습니다.");
             }
         }
+
+        // 이벤트 리스너 설정
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('selectedImage1').addEventListener('click', () => removeImage('selectedImage1', 'tab1'));
+            document.getElementById('selectedImage2').addEventListener('click', () => removeImage('selectedImage2', 'tab2'));
+            
+            // 기타 필요한 이벤트 리스너 추가
+        });
     </script>
 </body>
 </html>
