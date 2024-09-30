@@ -919,48 +919,6 @@
             }
         });
 
-        // 드래그하여 스크롤할 수 있는 기능 추가
-        function enableDragScroll(container, isVertical = false) {
-            let isDown = false;
-            let startX, startY;
-            let scrollLeft, scrollTop;
-
-            container.addEventListener('mousedown', (e) => {
-                isDown = true;
-                container.classList.add('active');
-                startX = e.pageX - container.offsetLeft;
-                startY = e.pageY - container.offsetTop;
-                scrollLeft = container.scrollLeft;
-                scrollTop = container.scrollTop;
-            });
-
-            container.addEventListener('mouseleave', () => {
-                isDown = false;
-                container.classList.remove('active');
-            });
-
-            container.addEventListener('mouseup', () => {
-                isDown = false;
-                container.classList.remove('active');
-            });
-
-            container.addEventListener('mousemove', (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - container.offsetLeft;
-                const y = e.pageY - container.offsetTop;
-                if (isVertical) {
-                    // 세로 스크롤 적용
-                    const walkY = (y - startY) * 2; // 스크롤 속도 조정
-                    container.scrollTop = scrollTop - walkY;
-                } else {
-                    // 가로 스크롤 적용
-                    const walkX = (x - startX) * 3; // 스크롤 속도 조정
-                    container.scrollLeft = scrollLeft - walkX;
-                }
-            });
-        }
-
         // 사이드바는 세로 스크롤, 필터 이미지는 가로 스크롤
         document.addEventListener('DOMContentLoaded', function () {
             const sidebarContainer = document.querySelector('.product-grid'); // 사이드바
