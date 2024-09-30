@@ -742,42 +742,6 @@
 
                     </div>
                 </div>
-
-                <div class="filter-options">
-                    <span style="color: #ffffff;
-            width: 100%;
-            position: relative;
-            height: 20px;
-            display: block;
-            line-height: 30px;
-            margin-top: 10px;">필터적용</span>
-                    <div class="filter-image-container">
-                        <button onclick="applyFilter('service-images/F1.gif', 0)" class="filter-button">
-                            <img src="service-images/F1.gif" alt="필터 1">
-                            <span class="filter-text">필터 없음</span>
-                        </button>
-                        <button onclick="applyFilter('service-images/F2.gif', 1)" class="filter-button">
-                            <img src="service-images/F2.gif" alt="필터 2">
-                            <span class="filter-text">필터 없음</span>
-                        </button>
-                        <button onclick="applyFilter('service-images/F3.gif', 2)" class="filter-button">
-                            <img src="service-images/F3.gif" alt="필터 3">
-                            <span class="filter-text">필터 없음</span>
-                        </button>
-                        <button onclick="applyFilter('service-images/F4.gif', 3)" class="filter-button"> <!-- 4번째 버튼 -->
-                            <img src="service-images/F4.gif" alt="필터 4">
-                            <span class="filter-text">필터 없음</span>
-                        </button>
-                        <button onclick="applyFilter('service-images/F5.gif', 4)" class="filter-button"> <!-- 4번째 버튼 -->
-                            <img src="service-images/F5.gif" alt="필터 5">
-                            <span class="filter-text">필터 없음</span>
-                        </button>
-                        <button onclick="applyFilter('service-images/F6.gif', 5)" class="filter-button"> <!-- 4번째 버튼 -->
-                            <img src="service-images/F6.gif" alt="필터 6">
-                            <span class="filter-text">필터 없음</span>
-                        </button>
-                    </div>
-                </div>
             </div>
 
             <!-- 우측 사용자 이미지 수정 섹션 -->
@@ -907,35 +871,6 @@
             }
         }
 
-
-
-        // 필터 버튼 클릭 시 미리보기 이미지 변경
-        function applyFilter(imageSrc, buttonIndex) {
-            var previewImageDiv = document.querySelector('.image-preview');
-            var filterButtons = document.querySelectorAll('.filter-button');
-            var filterTexts = document.querySelectorAll('.filter-text');
-
-            // 모든 버튼을 순회하면서 처리
-            filterButtons.forEach(function (button, index) {
-                if (index === buttonIndex) {
-                    // 선택된 버튼의 텍스트 색상 변경
-                    button.classList.add('clicked'); // 클릭된 버튼으로 표시
-                    button.querySelector('.filter-text').style.color = 'rgba(255, 255, 255, 0)'; // 텍스트 색상 변경
-                    button.querySelector('img').style.filter = 'none'; // 선택된 버튼의 이미지는 그대로 유지
-                } else {
-                    // 나머지 버튼들의 텍스트를 기본 색상으로 유지하고 이미지는 어둡게 처리
-                    button.classList.remove('clicked');
-                    button.querySelector('.filter-text').style.color = '#aaaaaa'; // 나머지 텍스트는 기본 색상
-                    button.querySelector('img').style.filter = 'brightness(20%)'; // 나머지 버튼의 이미지를 어둡게 처리
-                }
-            });
-
-            // 미리보기 섹션에 선택된 이미지 추가
-            previewImageDiv.innerHTML = '<img src="' + imageSrc + '" alt="Filtered Image" style="width:100%; height:auto; border-radius: 8px;">';
-        }
-
-
-
         function generateImage() {
             var selectedImage1 = document.getElementById('selectedImage1');
             var selectedImage2 = document.getElementById('selectedImage2');
@@ -964,102 +899,6 @@
                 setTimeout(function () {
                     ballContainer.style.display = 'none';
                     loadingText.remove(); // "이미지 생성중..." 텍스트 제거
-
-                    // 첫 번째 필터를 강제로 적용 (항상 첫 번째 버튼을 선택 상태로 유지)
-                    applyFilter('service-images/F1.gif', 0);
-
-                }, 5000); // 5초 후에 실행
-            } else {
-                // 이미지가 모두 선택되지 않았을 경우 경고 메시지
-                alert('상품 이미지와 연예인 이미지를 모두 선택해주세요.');
-            }
-        }
-
-        // 페이지가 로드되었을 때 필터 버튼을 비활성화
-        document.addEventListener('DOMContentLoaded', function () {
-            const filterButtons = document.querySelectorAll('.filter-button');
-            filterButtons.forEach(function (button) {
-                button.style.pointerEvents = 'none'; // 클릭 불가하게 설정
-                button.style.opacity = 0.5; // 비활성화된 느낌으로 스타일 변경
-                button.style.cursor = 'not-allowed'; // 클릭할 수 없음을 시각적으로 표현
-            });
-        });
-
-        // 이미지 생성하기 버튼 클릭 후 필터 버튼 활성화
-        function generateImage() {
-            var selectedImage1 = document.getElementById('selectedImage1');
-            var selectedImage2 = document.getElementById('selectedImage2');
-            var ballContainer = document.querySelector('.ball-container');
-            var imagePreviewDiv = document.querySelector('.image-preview');
-            var filterOptions = document.querySelectorAll('.filter-options img');
-            var imagePlaceholder = document.getElementById('image-placeholder'); // 이미지 생성 텍스트
-            var loadingText = document.createElement('p'); // "이미지 생성중" 텍스트 생성
-            loadingText.id = 'loading-text';
-            loadingText.innerText = '이미지 생성중...';
-            loadingText.style.marginTop = '-30px'; // 간격 추가
-
-            // 필터 텍스트 변경 (예: "필터 1 적용됨", "필터 2 적용됨" 등)
-            var filterTexts = document.querySelectorAll('.filter-text');
-            var filterButtons = document.querySelectorAll('.filter-button');
-            var filterMessages = ['원본', '흑백', '로맨틱', '화사하게', '핑크빛', '따뜻하게'];
-
-            // 클릭된 버튼의 인덱스를 저장할 변수
-            let clickedButtonIndex = -1;
-
-            // 두 개의 이미지가 모두 선택되었는지 확인
-            if (!selectedImage1.innerHTML.includes('상품 이미지를<br>넣어주세요') &&
-                !selectedImage2.innerHTML.includes('연예인 이미지를<br>넣어주세요')) {
-
-                // "이미지 생성하기 버튼을 눌러주세요" 텍스트 숨기기
-                imagePlaceholder.style.display = 'none';
-
-                // ball-container를 5초 동안 보이게 하기
-                ballContainer.style.display = 'grid';
-
-                // "이미지 생성중..." 텍스트를 ball-container 바로 아래에 추가
-                ballContainer.insertAdjacentElement('afterend', loadingText);
-
-                // 5초 후에 ball-container 숨기고 이미지 및 필터 텍스트 변경
-                setTimeout(function () {
-                    ballContainer.style.display = 'none';
-                    loadingText.remove(); // "이미지 생성중..." 텍스트 제거
-
-                    // 클릭된 버튼을 제외하고 나머지 버튼들의 이미지를 어둡게 처리하고 텍스트 변경
-                    filterButtons.forEach(function (button, index) {
-                        if (button.classList.contains('clicked')) {
-                            // 클릭된 버튼의 텍스트를 숨기고, 이미지를 그대로 유지
-                            clickedButtonIndex = index; // 클릭된 버튼의 인덱스 저장
-                            filterTexts[index].style.display = 'none'; // 클릭된 버튼의 텍스트 숨기기
-                            button.querySelector('img').style.filter = 'none'; // 클릭된 버튼의 이미지를 그대로 유지
-                        } else {
-                            // 나머지 버튼의 텍스트는 각각 다른 메시지로 설정하고 이미지 어둡게 처리
-                            filterTexts[index].innerText = filterMessages[index];
-                            filterTexts[index].style.display = 'block'; // 나머지 버튼의 텍스트 보이기
-                            button.querySelector('img').style.filter = 'brightness(50%)'; // 나머지 버튼 어둡게 처리
-                        }
-                    });
-
-                    // 필터 버튼 활성화
-                    filterButtons.forEach(function (button) {
-                        button.style.pointerEvents = 'auto'; // 클릭 가능하게 설정
-                        button.style.opacity = 1; // 버튼을 활성화된 상태로 보이게 함
-                        button.style.cursor = 'pointer'; // 클릭 가능 상태로 변경
-                    });
-
-                    // 필터의 첫 번째 이미지를 선택하여 사용
-                    var firstFilterImage = filterOptions[0];
-
-                    if (firstFilterImage) {
-                        // 미리보기 섹션에 이미지 추가
-                        imagePreviewDiv.innerHTML = '<img src="' + firstFilterImage.src + '" alt="Generated Image" style="width:100%; height:auto; border-radius: 8px;">';
-
-                        // 필터 옵션 이미지들 보이게 설정
-                        filterOptions.forEach(function (img) {
-                            img.style.display = 'block'; // 필터 이미지 보이게 설정
-                        });
-                    } else {
-                        alert('필터 이미지가 없습니다.');
-                    }
                 }, 5000); // 5초 후에 실행
             } else {
                 // 이미지가 모두 선택되지 않았을 경우 경고 메시지
