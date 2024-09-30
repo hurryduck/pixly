@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-
-<!-- Swiper JS -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <title>Pixely UI Clone</title>
     <style>
@@ -27,7 +26,9 @@
             background-color: #121212;
             color: #fff;
         }
-        h1,h2,h3,p,span,input, alt{
+
+        h1, h2, h3, p, span, input,
+        alt {
             font-family: "Noto Sans KR", sans-serif;
         }
 
@@ -69,7 +70,8 @@
 
         .main-content {
             display: flex;
-            height: calc(100% - 70px); /* 헤더 높이를 제외한 높이 */
+            height: calc(100% - 70px);
+            /* 헤더 높이를 제외한 높이 */
             margin: 0px 10px 10px 10px;
         }
 
@@ -77,7 +79,7 @@
         .sidebar {
             width: 25%;
             background-color: #141414;
-          
+
             height: 100%;
             border-radius: 10px;
             position: relative;
@@ -117,7 +119,7 @@
             padding-right: 25px;
             padding-left: 25px;
             overflow-y: auto;
-            
+
         }
 
         .product-grid.active {
@@ -131,15 +133,17 @@
         }
 
         .product-grid img.clicked {
-    pointer-events: none; /* 클릭 방지 */
-    opacity: 1; /* 클릭된 이미지는 사라지지 않음 */
-}
+            pointer-events: none;
+            /* 클릭 방지 */
+            opacity: 1;
+            /* 클릭된 이미지는 사라지지 않음 */
+        }
 
 
         /* 스크롤바 스타일 */
         .product-grid::-webkit-scrollbar {
             width: 8px;
-            right:10px;
+            right: 10px;
             position: relative;
         }
 
@@ -175,11 +179,13 @@
         }
 
         .search-container input:focus {
-    outline: none; /* Remove the default outline on focus */
-    border: none; /* Remove the border when focused */
-}
+            outline: none;
+            /* Remove the default outline on focus */
+            border: none;
+            /* Remove the border when focused */
+        }
 
-      
+
         .search-container .search-icon {
             position: absolute;
             top: 50%;
@@ -209,45 +215,49 @@
         }
 
         /* 사이드바 너비 고정 */
-            .editor-section {
-                width: 350px; /* 고정된 너비 설정 */
-                padding: 20px;
-                background-color: #181818;
-                height: 100%;
-                border-radius: 10px;
-            }
+        .editor-section {
+            width: 350px;
+            /* 고정된 너비 설정 */
+            padding: 20px;
+            background-color: #181818;
+            height: 100%;
+            border-radius: 10px;
+        }
 
-            /* 이미지 생성 버튼 크기 조정 */
-            .editing-box button {
-                width: 100%; /* 버튼 너비를 100%로 설정 */
-                height: 50px; /* 버튼 높이 조정 */
-                font-size: 16px;
-            }
+        /* 이미지 생성 버튼 크기 조정 */
+        .editing-box button {
+            width: 100%;
+            /* 버튼 너비를 100%로 설정 */
+            height: 50px;
+            /* 버튼 높이 조정 */
+            font-size: 16px;
+        }
 
 
         /* selected-images를 나눈 div 스타일 */
         .selected-images {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 두 개의 열로 설정 */
+            grid-template-columns: repeat(2, 1fr);
+            /* 두 개의 열로 설정 */
             gap: 10px;
             margin-bottom: 20px;
             margin-top: 15px;
         }
 
         .selected-image {
-    width: 100%;
-    border: 1px solid #333;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    min-height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #aaa;
-    font-size: 14px;
-    line-height: 18px;
-}
+            width: 100%;
+            border: 1px solid #333;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 14px;
+            line-height: 18px;
+        }
 
         .selected-image img {
             max-width: 100%;
@@ -258,13 +268,13 @@
 
         .editing-box {
 
-            margin-bottom:20px;
+            margin-bottom: 20px;
 
         }
 
         .editing-box textarea {
-            border:2px solid #292929;
-         
+            border: 2px solid #292929;
+
             width: 100%;
             height: 400px;
             background-color: #222;
@@ -275,8 +285,9 @@
             font-size: 16px;
             outline: none;
         }
+
         .editing-box textarea:focus {
-          
+
             width: 100%;
             height: 400px;
             border-radius: 15px;
@@ -289,70 +300,62 @@
             font-size: 16px;
             border-image: linear-gradient(-45deg, #FFA63D, #FF3D77, #338AFF, #3CF0C5);
             border-image-slice: 1;
-            resize: none; /* Disable manual resizing */
-            animation: gradientBorder 2s infinite; /* Changed to 2 seconds */
-            }
+            resize: none;
+            /* Disable manual resizing */
+            animation: gradientBorder 2s infinite;
+            /* Changed to 2 seconds */
+        }
 
-            /* Define the animation for the gradient border */
-            @keyframes gradientBorder {
+        /* Define the animation for the gradient border */
+        @keyframes gradientBorder {
             0% {
                 border-image-source: linear-gradient(45deg, #ff6ec4, #7873f5);
             }
+
             25% {
                 border-image-source: linear-gradient(45deg, #ff9a6c, #42a5f5);
             }
-            
+
             75% {
                 border-image-source: linear-gradient(45deg, #ff4081, #7b1fa2);
             }
+
             100% {
                 border-image-source: linear-gradient(45deg, #ff6ec4, #7873f5);
             }
-            }
+        }
 
-
-
-
-
-
-
-
-
-      
-
-           /* 이미지 생성 하기 버튼 */
-
-              .editing-box button {          
-                background-color: #0377ff;             
-                color: #fff;
-                 border-radius: 8px;
-                 }
+        /* 이미지 생성 하기 버튼 */
 
         .editing-box button {
-                background-image: linear-gradient(to right, #574CE3 0%, #2E8CF0 51%, #574CE3 100%);
-                text-align: center;
-                text-transform: uppercase;
-                transition: 0.5s;
-                background-size: 200% auto;
-                color: white;
-                border-radius: 10px;
-                display: block;
-                width: 100%;
-                padding: 10px;
-                cursor: pointer;
-                border: none;
-                height: 60px;
-                font-size: 16px;
-            }
+            background-color: #0377ff;
+            color: #fff;
+            border-radius: 8px;
+        }
 
-          .editing-box button:hover {
-            background-position: right center; /* change the direction of the change here */
+        .editing-box button {
+            background-image: linear-gradient(to right, #574CE3 0%, #2E8CF0 51%, #574CE3 100%);
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            border-radius: 10px;
+            display: block;
+            width: 100%;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            height: 60px;
+            font-size: 16px;
+        }
+
+        .editing-box button:hover {
+            background-position: right center;
+            /* change the direction of the change here */
             color: #fff;
             text-decoration: none;
-          }
-         
-  
- 
+        }
 
         /* 상단 버튼 스타일 */
         .top-buttons {
@@ -360,7 +363,7 @@
             justify-content: space-between;
             margin-bottom: 20px;
             border-bottom: 1px solid #515151;
-          padding: 20px 0;
+            padding: 20px 0;
         }
 
         .top-buttons button {
@@ -381,26 +384,26 @@
 
         button.download-button {
             background-color: #0377FF;
-            color:#000;
-            border:none;
+            color: #000;
+            border: none;
             width: 50%;
             margin: 0 4px;
             font-weight: bold;
         }
 
 
-        .filter-options{
-            margin-top:20px;
+        .filter-options {
+            margin-top: 20px;
         }
 
         /* 이미지 프리뷰 */
         .image-preview {
-                width: 600px;
-                height: 500px;
-                overflow: hidden;
-                border: 1px solid #1e1e1e;
-                border-radius: 10px;
-            }
+            width: 600px;
+            height: 500px;
+            overflow: hidden;
+            border: 1px solid #1e1e1e;
+            border-radius: 10px;
+        }
 
 
         /*알림 */
@@ -408,239 +411,255 @@
             width: 25px;
             height: 25px;
             margin: 0 15px;
-            
+
         }
 
         .filter-image-container {
-    display: flex;
-    overflow-x: auto; /* 좌우 스크롤 허용 */
-    overflow-y: hidden; /* 위아래 스크롤 비활성화 */
-    width: 100%;
-    max-width: 600px; /* 처음에 4개의 버튼만 보이게 설정 */
-    scroll-behavior: smooth; /* 부드러운 스크롤 */
-    padding: 10px 0;
-}
+            display: flex;
+            overflow-x: auto;
+            /* 좌우 스크롤 허용 */
+            overflow-y: hidden;
+            /* 위아래 스크롤 비활성화 */
+            width: 100%;
+            max-width: 600px;
+            /* 처음에 4개의 버튼만 보이게 설정 */
+            scroll-behavior: smooth;
+            /* 부드러운 스크롤 */
+            padding: 10px 0;
+        }
 
-.filter-button {
-    flex: 0 0 142px; /* 버튼 크기를 고정 */
-    width: 142px;
-    height: 142px;
-    margin-right: 10px;
-    border: 1px solid #333;
-    border-radius: 10px;
-    background-color: #181818;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
+        .filter-button {
+            flex: 0 0 142px;
+            /* 버튼 크기를 고정 */
+            width: 142px;
+            height: 142px;
+            margin-right: 10px;
+            border: 1px solid #333;
+            border-radius: 10px;
+            background-color: #181818;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
 
-.filter-button img {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    object-fit: cover;
-    display: block;
-}
+        .filter-button img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            object-fit: cover;
+            display: block;
+        }
 
-/* 클릭된 버튼의 텍스트 숨기기 */
-/* 클릭된 버튼의 텍스트 색상을 빨간색으로 변경 */
-.filter-button.clicked .filter-text {
-    color: rgba(255, 255, 255, 0); /* 텍스트 색상을 빨간색으로 변경 */
-}
-
-
-/* 나머지 버튼 이미지 어둡게 처리 */
-.filter-button.dimmed img {
-    filter: brightness(20%); /* 나머지 버튼 이미지를 어둡게 */
-}
-
-
+        /* 클릭된 버튼의 텍스트 숨기기 */
+        /* 클릭된 버튼의 텍스트 색상을 빨간색으로 변경 */
+        .filter-button.clicked .filter-text {
+            color: rgba(255, 255, 255, 0);
+            /* 텍스트 색상을 빨간색으로 변경 */
+        }
 
 
-/* 기본적으로 필터 텍스트는 보이도록 설정 */
-.filter-text {
-    display: block !important;
-    z-index: 2;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #aaaaaa;
-    font-size: 14px;
-}
+        /* 나머지 버튼 이미지 어둡게 처리 */
+        .filter-button.dimmed img {
+            filter: brightness(20%);
+            /* 나머지 버튼 이미지를 어둡게 */
+        }
+
+        /* 기본적으로 필터 텍스트는 보이도록 설정 */
+        .filter-text {
+            display: block !important;
+            z-index: 2;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #aaaaaa;
+            font-size: 14px;
+        }
 
 
-/* 이미지가 로드된 후 텍스트를 숨김 */
-.filter-button img[src]:not([src=""]) + .filter-text {
-    display: none;
-}
+        /* 이미지가 로드된 후 텍스트를 숨김 */
+        .filter-button img[src]:not([src=""])+.filter-text {
+            display: none;
+        }
 
 
-.filter-button img[src]:not([src=""]) + .filter-text {
-    display: none;
-}
+        .filter-button img[src]:not([src=""])+.filter-text {
+            display: none;
+        }
 
-.filter-image-container::-webkit-scrollbar {
-    height: 0; /* 스크롤바 숨기기 */
-}
+        .filter-image-container::-webkit-scrollbar {
+            height: 0;
+            /* 스크롤바 숨기기 */
+        }
 
-.filter-image-container::-webkit-scrollbar-thumb {
-    background-color: transparent; /* 스크롤바 손잡이 투명하게 */
-}
+        .filter-image-container::-webkit-scrollbar-thumb {
+            background-color: transparent;
+            /* 스크롤바 손잡이 투명하게 */
+        }
 
-.filter-image-container::-webkit-scrollbar-track {
-    background-color: transparent; /* 스크롤바 트랙 투명하게 */
-}
-
-
-
-
-
-
-
+        .filter-image-container::-webkit-scrollbar-track {
+            background-color: transparent;
+            /* 스크롤바 트랙 투명하게 */
+        }
 
         /*  볼 */
-
         .ball-container {
-    display: none; /* 기본적으로 보이지 않게 설정 */
-    grid-template-columns: repeat(5, 17px);
-    gap: 9px;
-    justify-content: center;
-    align-items: center;
-    transform: translateY(-62px);
-}
+            display: none;
+            /* 기본적으로 보이지 않게 설정 */
+            grid-template-columns: repeat(5, 17px);
+            gap: 9px;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(-62px);
+        }
 
-                 .ball {
-                        width: 8px;
-                        height: 8px;
-                        border-radius: 50%;
-                        animation: wave 1.5s ease-in-out infinite;
-                    background-color:#37bf57;
-                    }
+        .ball {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: wave 1.5s ease-in-out infinite;
+            background-color: #37bf57;
+        }
 
-                    .ball:nth-child(2) {
-                        animation-delay: -0.2s;
-                        background-color:#49caa1;
-                    }
+        .ball:nth-child(2) {
+            animation-delay: -0.2s;
+            background-color: #49caa1;
+        }
 
-                    .ball:nth-child(3) {
-                        animation-delay: -0.4s;
-                    background-color:#12aab4;
-                    }
+        .ball:nth-child(3) {
+            animation-delay: -0.4s;
+            background-color: #12aab4;
+        }
 
-                    .ball:nth-child(4) {
-                        animation-delay: -0.6s;
-                    background-color:#2c88c1;
-                    }
+        .ball:nth-child(4) {
+            animation-delay: -0.6s;
+            background-color: #2c88c1;
+        }
 
-                    .ball:nth-child(5) {
-                        animation-delay: -0.8s;
-                        background-color:#6b45b1;
-                    }
+        .ball:nth-child(5) {
+            animation-delay: -0.8s;
+            background-color: #6b45b1;
+        }
 
-                    @keyframes wave {
-                        0%, 100% {
-                            transform: translateY(20px);
-                        }
-                        50% {
-                            transform: translateY(-20px);
-                        }
-                    }
+        @keyframes wave {
 
-                    .loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    width: 600px;
-    height: 600px;
-    overflow: hidden;
-    border: 1px solid #161616;
-    border-radius: 20px;
-                    }
+            0%,
+            100% {
+                transform: translateY(20px);
+            }
 
-                #image-placeholder {
-    color: #929292;
-    font-size: 16px;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    line-height: 20px;
-    width: max-content; /* 텍스트에 맞게 너비 조정 */
-    height: auto; /* 높이 자동 설정 */
-}
+            50% {
+                transform: translateY(-20px);
+            }
+        }
 
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            width: 600px;
+            height: 600px;
+            overflow: hidden;
+            border: 1px solid #161616;
+            border-radius: 20px;
+        }
 
-.product-grid, .filter-image-container {
-    cursor: grab;
-}
-
-.product-grid.active, .filter-image-container.active {
-    cursor: grabbing;
-}
+        #image-placeholder {
+            color: #929292;
+            font-size: 16px;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            line-height: 20px;
+            width: max-content;
+            /* 텍스트에 맞게 너비 조정 */
+            height: auto;
+            /* 높이 자동 설정 */
+        }
 
 
+        .product-grid,
+        .filter-image-container {
+            cursor: grab;
+        }
 
-.seletimg-txt {
-    color: #ffffff;
-    width: 100%;
-    position: relative;
-    height: 13px;
-    display: block;
-    /* line-height: 30px; */
-    /* margin-top: 10px; */
-}
+        .product-grid.active,
+        .filter-image-container.active {
+            cursor: grabbing;
+        }
+
+        .seletimg-txt {
+            color: #ffffff;
+            width: 100%;
+            position: relative;
+            height: 13px;
+            display: block;
+            /* line-height: 30px; */
+            /* margin-top: 10px; */
+        }
 
 
-#loading-text {
-    font-size: 17px;
-    font-weight: bold;
-    text-align: center;
-    background: linear-gradient(-45deg, #FFA63D, #FF3D77, #338AFF, #3CF0C5); /* 같은 색상 */
-    background-size: 300% 300%; /* 그라데이션이 움직이도록 크기 설정 */
-    -webkit-background-clip: text; /* 텍스트에만 그라데이션 적용 */
-    background-clip: text;
-    color: transparent; /* 텍스트 투명하게 */
-    animation: gradientMove 3s ease infinite; /* 움직이는 애니메이션 적용 */
-}
+        #loading-text {
+            font-size: 17px;
+            font-weight: bold;
+            text-align: center;
+            background: linear-gradient(-45deg, #FFA63D, #FF3D77, #338AFF, #3CF0C5);
+            /* 같은 색상 */
+            background-size: 300% 300%;
+            /* 그라데이션이 움직이도록 크기 설정 */
+            -webkit-background-clip: text;
+            /* 텍스트에만 그라데이션 적용 */
+            background-clip: text;
+            color: transparent;
+            /* 텍스트 투명하게 */
+            animation: gradientMove 3s ease infinite;
+            /* 움직이는 애니메이션 적용 */
+        }
 
-/* 그라데이션이 움직이는 애니메이션 */
-@keyframes gradientMove {
-    0% {
-        background-position: 0% 50%; /* 왼쪽에서 시작 */
-    }
-    50% {
-        background-position: 100% 50%; /* 오른쪽으로 이동 */
-    }
-    100% {
-        background-position: 0% 50%; /* 다시 왼쪽으로 이동 */
-    }
-}
+        /* 그라데이션이 움직이는 애니메이션 */
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+                /* 왼쪽에서 시작 */
+            }
 
-.filter-options img {
-                                display: none; /* 필터 내 이미지 기본적으로 숨김 */
-                            }
+            50% {
+                background-position: 100% 50%;
+                /* 오른쪽으로 이동 */
+            }
 
+            100% {
+                background-position: 0% 50%;
+                /* 다시 왼쪽으로 이동 */
+            }
+        }
+
+        .filter-options img {
+            display: none;
+            /* 필터 내 이미지 기본적으로 숨김 */
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- 헤더 영역 -->
         <header>
             <div class="logo"><img src="service-images/logo2.png" style="width:140px;"></div>
             <div class="user-profile">
-                <img src="service-images/alram2.png" class="user-alram" >
-                <img src="service-images/profile2.png" class="user-avatar" >
+                <img src="service-images/alram2.png" class="user-alram">
+                <img src="service-images/profile2.png" class="user-avatar">
                 <span class="user-name">Cha Eun</span>
             </div>
         </header>
@@ -661,33 +680,49 @@
                         <img src="service-images/search.png" alt="Search Icon">
                     </span>
                 </div>
-                
+
                 <!-- 상품 이미지 그리드 -->
-                <div id="productImages" class="product-grid active">                  
-                    <img src="service-images/tab1/1.jpg" alt="Product 1" onclick="selectImage(this, 'service-images/tab1/1.jpg', 'tab1')">
-                    <img src="service-images/tab1/2.jpg" alt="Product 2" onclick="selectImage(this, 'service-images/tab1/2.jpg', 'tab1')">
-                    <img src="service-images/tab1/3.jpg" alt="Product 2" onclick="selectImage(this, 'service-images/tab1/3.jpg', 'tab1')">
-                    <img src="service-images/tab1/4.jpg" alt="Product 2" onclick="selectImage(this, 'service-images/tab1/4.jpg', 'tab1')">
-                    <img src="service-images/tab1/5.jpg" alt="Product 2" onclick="selectImage(this, 'service-images/tab1/5.jpg', 'tab1')">
-                    <img src="service-images/tab1/6.jpg" alt="Product 2" onclick="selectImage(this, 'service-images/tab1/6.jpg', 'tab1')">
-                    <img src="service-images/tab1/7.jpg" alt="Product 2" onclick="selectImage(this, 'service-images/tab1/7.jpg', 'tab1')">
-                    <img src="service-images/tab1/8.jpg" alt="Product 2" onclick="selectImage(this, 'service-images/tab1/8.jpg', 'tab1')">
-                    
+                <div id="productImages" class="product-grid active">
+                    <img src="service-images/tab1/1.jpg" alt="Product 1"
+                        onclick="selectImage(this, 'service-images/tab1/1.jpg', 'tab1')">
+                    <img src="service-images/tab1/2.jpg" alt="Product 2"
+                        onclick="selectImage(this, 'service-images/tab1/2.jpg', 'tab1')">
+                    <img src="service-images/tab1/3.jpg" alt="Product 2"
+                        onclick="selectImage(this, 'service-images/tab1/3.jpg', 'tab1')">
+                    <img src="service-images/tab1/4.jpg" alt="Product 2"
+                        onclick="selectImage(this, 'service-images/tab1/4.jpg', 'tab1')">
+                    <img src="service-images/tab1/5.jpg" alt="Product 2"
+                        onclick="selectImage(this, 'service-images/tab1/5.jpg', 'tab1')">
+                    <img src="service-images/tab1/6.jpg" alt="Product 2"
+                        onclick="selectImage(this, 'service-images/tab1/6.jpg', 'tab1')">
+                    <img src="service-images/tab1/7.jpg" alt="Product 2"
+                        onclick="selectImage(this, 'service-images/tab1/7.jpg', 'tab1')">
+                    <img src="service-images/tab1/8.jpg" alt="Product 2"
+                        onclick="selectImage(this, 'service-images/tab1/8.jpg', 'tab1')">
+
                 </div>
 
                 <!-- 인플루언서 이미지 그리드 -->
                 <div id="influencerImages" class="product-grid">
-                    <img src="service-images/tab2/1.jpg" alt="Influencer 1" onclick="selectImage(this, 'service-images/tab2/1.jpg', 'tab2')">
-                    <img src="service-images/tab2/2.jpg" alt="Influencer 2" onclick="selectImage(this, 'service-images/tab2/2.jpg', 'tab2')">
-                    <img src="service-images/tab2/3.jpg" alt="Influencer 1" onclick="selectImage(this, 'service-images/tab2/3.jpg', 'tab2')">
-                    <img src="service-images/tab2/4.jpg" alt="Influencer 2" onclick="selectImage(this, 'service-images/tab2/4.jpg', 'tab2')">
-                    <img src="service-images/tab2/5.jpg" alt="Influencer 1" onclick="selectImage(this, 'service-images/tab2/5.jpg', 'tab2')">
-                    <img src="service-images/tab2/6.jpg" alt="Influencer 2" onclick="selectImage(this, 'service-images/tab2/6.jpg', 'tab2')">
-                    <img src="service-images/tab2/7.jpg" alt="Influencer 1" onclick="selectImage(this, 'service-images/tab2/7.jpg', 'tab2')">
-                    <img src="service-images/tab2/8.jpg" alt="Influencer 2" onclick="selectImage(this, 'service-images/tab2/8.jpg', 'tab2')">
+                    <img src="service-images/tab2/1.jpg" alt="Influencer 1"
+                        onclick="selectImage(this, 'service-images/tab2/1.jpg', 'tab2')">
+                    <img src="service-images/tab2/2.jpg" alt="Influencer 2"
+                        onclick="selectImage(this, 'service-images/tab2/2.jpg', 'tab2')">
+                    <img src="service-images/tab2/3.jpg" alt="Influencer 1"
+                        onclick="selectImage(this, 'service-images/tab2/3.jpg', 'tab2')">
+                    <img src="service-images/tab2/4.jpg" alt="Influencer 2"
+                        onclick="selectImage(this, 'service-images/tab2/4.jpg', 'tab2')">
+                    <img src="service-images/tab2/5.jpg" alt="Influencer 1"
+                        onclick="selectImage(this, 'service-images/tab2/5.jpg', 'tab2')">
+                    <img src="service-images/tab2/6.jpg" alt="Influencer 2"
+                        onclick="selectImage(this, 'service-images/tab2/6.jpg', 'tab2')">
+                    <img src="service-images/tab2/7.jpg" alt="Influencer 1"
+                        onclick="selectImage(this, 'service-images/tab2/7.jpg', 'tab2')">
+                    <img src="service-images/tab2/8.jpg" alt="Influencer 2"
+                        onclick="selectImage(this, 'service-images/tab2/8.jpg', 'tab2')">
                 </div>
             </aside>
-            
+
             <!-- 이미지 미리보기 섹션 -->
             <div class="preview-section">
                 <div class="image-preview">
@@ -705,54 +740,44 @@
                             이미지 생성하기 <br> 버튼을 눌러주세요.
                         </p>
 
-                        </div>
                     </div>
-                    
-        <div class="filter-options">
-            <span style="color: #ffffff;
+                </div>
+
+                <div class="filter-options">
+                    <span style="color: #ffffff;
             width: 100%;
             position: relative;
             height: 20px;
             display: block;
             line-height: 30px;
             margin-top: 10px;">필터적용</span>
-    <div class="filter-image-container">
-        <button onclick="applyFilter('service-images/F1.gif', 0)" class="filter-button">
-            <img src="service-images/F1.gif" alt="필터 1">
-            <span class="filter-text">필터 없음</span>
-        </button>
-        <button onclick="applyFilter('service-images/F2.gif', 1)" class="filter-button">
-            <img src="service-images/F2.gif" alt="필터 2">
-            <span class="filter-text">필터 없음</span>
-        </button>
-        <button onclick="applyFilter('service-images/F3.gif', 2)" class="filter-button">
-            <img src="service-images/F3.gif" alt="필터 3">
-            <span class="filter-text">필터 없음</span>
-        </button>
-        <button onclick="applyFilter('service-images/F4.gif', 3)" class="filter-button"> <!-- 4번째 버튼 -->
-            <img src="service-images/F4.gif" alt="필터 4">
-            <span class="filter-text">필터 없음</span>
-        </button>
-        <button onclick="applyFilter('service-images/F5.gif', 4)" class="filter-button"> <!-- 4번째 버튼 -->
-            <img src="service-images/F5.gif" alt="필터 5">
-            <span class="filter-text">필터 없음</span>
-        </button>
-        <button onclick="applyFilter('service-images/F6.gif', 5)" class="filter-button"> <!-- 4번째 버튼 -->
-            <img src="service-images/F6.gif" alt="필터 6">
-            <span class="filter-text">필터 없음</span>
-        </button>
-    </div>
-    
-    
-    
-    
-    
-    
-</div>
-
-
-
-
+                    <div class="filter-image-container">
+                        <button onclick="applyFilter('service-images/F1.gif', 0)" class="filter-button">
+                            <img src="service-images/F1.gif" alt="필터 1">
+                            <span class="filter-text">필터 없음</span>
+                        </button>
+                        <button onclick="applyFilter('service-images/F2.gif', 1)" class="filter-button">
+                            <img src="service-images/F2.gif" alt="필터 2">
+                            <span class="filter-text">필터 없음</span>
+                        </button>
+                        <button onclick="applyFilter('service-images/F3.gif', 2)" class="filter-button">
+                            <img src="service-images/F3.gif" alt="필터 3">
+                            <span class="filter-text">필터 없음</span>
+                        </button>
+                        <button onclick="applyFilter('service-images/F4.gif', 3)" class="filter-button"> <!-- 4번째 버튼 -->
+                            <img src="service-images/F4.gif" alt="필터 4">
+                            <span class="filter-text">필터 없음</span>
+                        </button>
+                        <button onclick="applyFilter('service-images/F5.gif', 4)" class="filter-button"> <!-- 4번째 버튼 -->
+                            <img src="service-images/F5.gif" alt="필터 5">
+                            <span class="filter-text">필터 없음</span>
+                        </button>
+                        <button onclick="applyFilter('service-images/F6.gif', 5)" class="filter-button"> <!-- 4번째 버튼 -->
+                            <img src="service-images/F6.gif" alt="필터 6">
+                            <span class="filter-text">필터 없음</span>
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <!-- 우측 사용자 이미지 수정 섹션 -->
@@ -761,14 +786,16 @@
                     <button class="share-button">공유하기</button>
                     <button class="download-button" onclick="downloadImage()">다운로드</button>
 
-                    
+
                 </div>
                 <span class="seletimg-txt">선택한 이미지</span>
                 <div class="selected-images">
-                    <div class="selected-image" id="selectedImage1" onclick="checkAndSwitchTab('tab1', 'productImages')">
+                    <div class="selected-image" id="selectedImage1"
+                        onclick="checkAndSwitchTab('tab1', 'productImages')">
                         상품 이미지를<br>넣어주세요
                     </div>
-                    <div class="selected-image" id="selectedImage2" onclick="checkAndSwitchTab('tab2', 'influencerImages')">
+                    <div class="selected-image" id="selectedImage2"
+                        onclick="checkAndSwitchTab('tab2', 'influencerImages')">
                         연예인 이미지를<br>넣어주세요
                     </div>
                 </div>
@@ -778,7 +805,7 @@
                     <button onclick="generateImage()">이미지 생성하기</button> <!-- 이미지 생성 버튼 -->
                 </div>
                 <style>
-                    
+
                 </style>
             </aside>
         </div>
@@ -787,46 +814,46 @@
     <script>
         let selectedFromTab1 = false; // 탭1에서 선택 여부
         let selectedFromTab2 = false; // 탭2에서 선택 여부
-    
+
         function selectImage(element, imageSrc, tab) {
-    var selectedImage1 = document.getElementById('selectedImage1');
-    var selectedImage2 = document.getElementById('selectedImage2');
-    
-    // 상품 이미지가 비어 있으면 상품 이미지 탭으로 이동
-    if (tab === 'tab1' && selectedImage1.innerHTML.includes('상품 이미지를<br>넣어주세요')) {
-        selectedImage1.innerHTML = '<img src="' + imageSrc + '" alt="Selected Image">';
-        element.classList.add('clicked'); // 클릭된 상태 유지
-        element.style.opacity = '1';      // 클릭된 이미지가 사라지지 않도록 처리
-    }
-    // 연예인 이미지가 비어 있으면 연예인 이미지 탭으로 이동
-    else if (tab === 'tab2' && selectedImage2.innerHTML.includes('연예인 이미지를<br>넣어주세요')) {
-        selectedImage2.innerHTML = '<img src="' + imageSrc + '" alt="Selected Image">';
-        element.classList.add('clicked'); // 클릭된 상태 유지
-        element.style.opacity = '1';      // 클릭된 이미지가 사라지지 않도록 처리
-    } else {
-        alert("한 장의 사진만 선택할 수 있습니다.");
-    }
+            var selectedImage1 = document.getElementById('selectedImage1');
+            var selectedImage2 = document.getElementById('selectedImage2');
 
-    // 사이드바의 다른 이미지들은 그대로 유지되도록 처리
-    var productGridImages = document.querySelectorAll('.product-grid img');
-    productGridImages.forEach(function(img) {
-        if (img !== element) {
-            img.style.opacity = '1'; // 다른 이미지는 그대로 유지
+            // 상품 이미지가 비어 있으면 상품 이미지 탭으로 이동
+            if (tab === 'tab1' && selectedImage1.innerHTML.includes('상품 이미지를<br>넣어주세요')) {
+                selectedImage1.innerHTML = '<img src="' + imageSrc + '" alt="Selected Image">';
+                element.classList.add('clicked'); // 클릭된 상태 유지
+                element.style.opacity = '1';      // 클릭된 이미지가 사라지지 않도록 처리
+            }
+            // 연예인 이미지가 비어 있으면 연예인 이미지 탭으로 이동
+            else if (tab === 'tab2' && selectedImage2.innerHTML.includes('연예인 이미지를<br>넣어주세요')) {
+                selectedImage2.innerHTML = '<img src="' + imageSrc + '" alt="Selected Image">';
+                element.classList.add('clicked'); // 클릭된 상태 유지
+                element.style.opacity = '1';      // 클릭된 이미지가 사라지지 않도록 처리
+            } else {
+                alert("한 장의 사진만 선택할 수 있습니다.");
+            }
+
+            // 사이드바의 다른 이미지들은 그대로 유지되도록 처리
+            var productGridImages = document.querySelectorAll('.product-grid img');
+            productGridImages.forEach(function (img) {
+                if (img !== element) {
+                    img.style.opacity = '1'; // 다른 이미지는 그대로 유지
+                }
+            });
         }
-    });
-}
 
-    
+
         function removeImage(imageId, tab) {
             var selectedImageDiv = document.getElementById(imageId);
-    
+
             if (selectedImageDiv.innerHTML !== '') {
                 var confirmDelete = confirm("이미지를 삭제하시겠어요? Y/N");
                 if (confirmDelete) {
                     var imgSrc = selectedImageDiv.querySelector('img') ? selectedImageDiv.querySelector('img').src : null;
                     // 왼쪽 사이드바에서 동일한 이미지 복원 (클릭 가능하게 변경)
                     var clickedImages = document.querySelectorAll('.product-grid img');
-                    clickedImages.forEach(function(img) {
+                    clickedImages.forEach(function (img) {
                         if (img.src === imgSrc) {
                             img.classList.remove('clicked'); // 클릭 가능하게 변경
                         }
@@ -841,36 +868,36 @@
                 }
             }
         }
-    
-    function openTab(tabName) {
-    var i, tabcontent, tablinks;
 
-    // 모든 product-grid 요소를 가져와서 숨김 처리
-    tabcontent = document.getElementsByClassName("product-grid");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].classList.remove('active'); // active 클래스 제거
-        tabcontent[i].style.display = "none"; // 그리드 숨김
-    }
+        function openTab(tabName) {
+            var i, tabcontent, tablinks;
 
-    // 모든 탭 버튼에서 active 클래스를 제거
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
-    }
+            // 모든 product-grid 요소를 가져와서 숨김 처리
+            tabcontent = document.getElementsByClassName("product-grid");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove('active'); // active 클래스 제거
+                tabcontent[i].style.display = "none"; // 그리드 숨김
+            }
 
-    // 선택된 탭을 표시하고 active 클래스 추가
-    document.getElementById(tabName).style.display = "grid"; // 선택된 탭 보이기
-    document.getElementById(tabName).classList.add('active'); // active 클래스 추가
-    event.currentTarget.classList.add("active"); // 현재 선택된 버튼에 active 클래스 추가
-}
+            // 모든 탭 버튼에서 active 클래스를 제거
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            // 선택된 탭을 표시하고 active 클래스 추가
+            document.getElementById(tabName).style.display = "grid"; // 선택된 탭 보이기
+            document.getElementById(tabName).classList.add('active'); // active 클래스 추가
+            event.currentTarget.classList.add("active"); // 현재 선택된 버튼에 active 클래스 추가
+        }
 
 
-    
+
         function changeImage(imageSrc) {
             var previewImage = document.getElementById('preview-image');
             previewImage.src = imageSrc;
         }
-    
+
         // 빈 이미지 클릭 시 해당 탭으로 이동
         function checkAndSwitchTab(tab, tabContentId) {
             var selectedImage = document.getElementById(tab === 'tab1' ? 'selectedImage1' : 'selectedImage2');
@@ -882,277 +909,262 @@
 
 
 
-// 필터 버튼 클릭 시 미리보기 이미지 변경
-function applyFilter(imageSrc, buttonIndex) {
-    var previewImageDiv = document.querySelector('.image-preview');
-    var filterButtons = document.querySelectorAll('.filter-button');
-    var filterTexts = document.querySelectorAll('.filter-text');
+        // 필터 버튼 클릭 시 미리보기 이미지 변경
+        function applyFilter(imageSrc, buttonIndex) {
+            var previewImageDiv = document.querySelector('.image-preview');
+            var filterButtons = document.querySelectorAll('.filter-button');
+            var filterTexts = document.querySelectorAll('.filter-text');
 
-    // 모든 버튼을 순회하면서 처리
-    filterButtons.forEach(function(button, index) {
-        if (index === buttonIndex) {
-            // 선택된 버튼의 텍스트 색상 변경
-            button.classList.add('clicked'); // 클릭된 버튼으로 표시
-            button.querySelector('.filter-text').style.color = 'rgba(255, 255, 255, 0)'; // 텍스트 색상 변경
-            button.querySelector('img').style.filter = 'none'; // 선택된 버튼의 이미지는 그대로 유지
-        } else {
-            // 나머지 버튼들의 텍스트를 기본 색상으로 유지하고 이미지는 어둡게 처리
-            button.classList.remove('clicked');
-            button.querySelector('.filter-text').style.color = '#aaaaaa'; // 나머지 텍스트는 기본 색상
-            button.querySelector('img').style.filter = 'brightness(20%)'; // 나머지 버튼의 이미지를 어둡게 처리
-        }
-    });
-
-    // 미리보기 섹션에 선택된 이미지 추가
-    previewImageDiv.innerHTML = '<img src="' + imageSrc + '" alt="Filtered Image" style="width:100%; height:auto; border-radius: 8px;">';
-}
-
-
-
-function generateImage() {
-    var selectedImage1 = document.getElementById('selectedImage1');
-    var selectedImage2 = document.getElementById('selectedImage2');
-    var ballContainer = document.querySelector('.ball-container');
-    var imagePreviewDiv = document.querySelector('.image-preview');
-    var imagePlaceholder = document.getElementById('image-placeholder'); // 이미지 생성 텍스트
-    var loadingText = document.createElement('p'); // "이미지 생성중" 텍스트 생성
-    loadingText.id = 'loading-text';
-    loadingText.innerText = '이미지 생성중...';
-    loadingText.style.marginTop = '-30px'; // 간격 추가
-
-    // 두 개의 이미지가 모두 선택되었는지 확인
-    if (!selectedImage1.innerHTML.includes('상품 이미지를<br>넣어주세요') &&
-        !selectedImage2.innerHTML.includes('연예인 이미지를<br>넣어주세요')) {
-        
-        // "이미지 생성하기 버튼을 눌러주세요" 텍스트 숨기기
-        imagePlaceholder.style.display = 'none';
-
-        // ball-container를 5초 동안 보이게 하기
-        ballContainer.style.display = 'grid';
-        
-        // "이미지 생성중..." 텍스트를 ball-container 바로 아래에 추가
-        ballContainer.insertAdjacentElement('afterend', loadingText);
-
-        // 5초 후에 ball-container 숨기고 이미지 및 필터 텍스트 변경
-        setTimeout(function() {
-            ballContainer.style.display = 'none';
-            loadingText.remove(); // "이미지 생성중..." 텍스트 제거
-
-            // 첫 번째 필터를 강제로 적용 (항상 첫 번째 버튼을 선택 상태로 유지)
-            applyFilter('service-images/F1.gif', 0);
-
-        }, 5000); // 5초 후에 실행
-    } else {
-        // 이미지가 모두 선택되지 않았을 경우 경고 메시지
-        alert('상품 이미지와 연예인 이미지를 모두 선택해주세요.');
-    }
-}
-
-
-
-
-    
-// 페이지가 로드되었을 때 필터 버튼을 비활성화
-document.addEventListener('DOMContentLoaded', function() {
-    const filterButtons = document.querySelectorAll('.filter-button');
-    filterButtons.forEach(function(button) {
-        button.style.pointerEvents = 'none'; // 클릭 불가하게 설정
-        button.style.opacity = 0.5; // 비활성화된 느낌으로 스타일 변경
-        button.style.cursor = 'not-allowed'; // 클릭할 수 없음을 시각적으로 표현
-    });
-});
-
-// 이미지 생성하기 버튼 클릭 후 필터 버튼 활성화
-function generateImage() {
-    var selectedImage1 = document.getElementById('selectedImage1');
-    var selectedImage2 = document.getElementById('selectedImage2');
-    var ballContainer = document.querySelector('.ball-container');
-    var imagePreviewDiv = document.querySelector('.image-preview');
-    var filterOptions = document.querySelectorAll('.filter-options img');
-    var imagePlaceholder = document.getElementById('image-placeholder'); // 이미지 생성 텍스트
-    var loadingText = document.createElement('p'); // "이미지 생성중" 텍스트 생성
-    loadingText.id = 'loading-text';
-    loadingText.innerText = '이미지 생성중...';
-    loadingText.style.marginTop = '-30px'; // 간격 추가
-
-    // 필터 텍스트 변경 (예: "필터 1 적용됨", "필터 2 적용됨" 등)
-    var filterTexts = document.querySelectorAll('.filter-text');
-    var filterButtons = document.querySelectorAll('.filter-button');
-    var filterMessages = ['원본', '흑백', '로맨틱', '화사하게', '핑크빛', '따뜻하게'];
-
-    // 클릭된 버튼의 인덱스를 저장할 변수
-    let clickedButtonIndex = -1;
-
-    // 두 개의 이미지가 모두 선택되었는지 확인
-    if (!selectedImage1.innerHTML.includes('상품 이미지를<br>넣어주세요') &&
-        !selectedImage2.innerHTML.includes('연예인 이미지를<br>넣어주세요')) {
-        
-        // "이미지 생성하기 버튼을 눌러주세요" 텍스트 숨기기
-        imagePlaceholder.style.display = 'none';
-
-        // ball-container를 5초 동안 보이게 하기
-        ballContainer.style.display = 'grid';
-        
-        // "이미지 생성중..." 텍스트를 ball-container 바로 아래에 추가
-        ballContainer.insertAdjacentElement('afterend', loadingText);
-
-        // 5초 후에 ball-container 숨기고 이미지 및 필터 텍스트 변경
-        setTimeout(function() {
-            ballContainer.style.display = 'none';
-            loadingText.remove(); // "이미지 생성중..." 텍스트 제거
-
-            // 클릭된 버튼을 제외하고 나머지 버튼들의 이미지를 어둡게 처리하고 텍스트 변경
-            filterButtons.forEach(function(button, index) {
-                if (button.classList.contains('clicked')) {
-                    // 클릭된 버튼의 텍스트를 숨기고, 이미지를 그대로 유지
-                    clickedButtonIndex = index; // 클릭된 버튼의 인덱스 저장
-                    filterTexts[index].style.display = 'none'; // 클릭된 버튼의 텍스트 숨기기
-                    button.querySelector('img').style.filter = 'none'; // 클릭된 버튼의 이미지를 그대로 유지
+            // 모든 버튼을 순회하면서 처리
+            filterButtons.forEach(function (button, index) {
+                if (index === buttonIndex) {
+                    // 선택된 버튼의 텍스트 색상 변경
+                    button.classList.add('clicked'); // 클릭된 버튼으로 표시
+                    button.querySelector('.filter-text').style.color = 'rgba(255, 255, 255, 0)'; // 텍스트 색상 변경
+                    button.querySelector('img').style.filter = 'none'; // 선택된 버튼의 이미지는 그대로 유지
                 } else {
-                    // 나머지 버튼의 텍스트는 각각 다른 메시지로 설정하고 이미지 어둡게 처리
-                    filterTexts[index].innerText = filterMessages[index];
-                    filterTexts[index].style.display = 'block'; // 나머지 버튼의 텍스트 보이기
-                    button.querySelector('img').style.filter = 'brightness(50%)'; // 나머지 버튼 어둡게 처리
+                    // 나머지 버튼들의 텍스트를 기본 색상으로 유지하고 이미지는 어둡게 처리
+                    button.classList.remove('clicked');
+                    button.querySelector('.filter-text').style.color = '#aaaaaa'; // 나머지 텍스트는 기본 색상
+                    button.querySelector('img').style.filter = 'brightness(20%)'; // 나머지 버튼의 이미지를 어둡게 처리
                 }
             });
 
-            // 필터 버튼 활성화
-            filterButtons.forEach(function(button) {
-                button.style.pointerEvents = 'auto'; // 클릭 가능하게 설정
-                button.style.opacity = 1; // 버튼을 활성화된 상태로 보이게 함
-                button.style.cursor = 'pointer'; // 클릭 가능 상태로 변경
-            });
+            // 미리보기 섹션에 선택된 이미지 추가
+            previewImageDiv.innerHTML = '<img src="' + imageSrc + '" alt="Filtered Image" style="width:100%; height:auto; border-radius: 8px;">';
+        }
 
-            // 필터의 첫 번째 이미지를 선택하여 사용
-            var firstFilterImage = filterOptions[0];
 
-            if (firstFilterImage) {
-                // 미리보기 섹션에 이미지 추가
-                imagePreviewDiv.innerHTML = '<img src="' + firstFilterImage.src + '" alt="Generated Image" style="width:100%; height:auto; border-radius: 8px;">';
 
-                // 필터 옵션 이미지들 보이게 설정
-                filterOptions.forEach(function(img) {
-                    img.style.display = 'block'; // 필터 이미지 보이게 설정
-                });
+        function generateImage() {
+            var selectedImage1 = document.getElementById('selectedImage1');
+            var selectedImage2 = document.getElementById('selectedImage2');
+            var ballContainer = document.querySelector('.ball-container');
+            var imagePreviewDiv = document.querySelector('.image-preview');
+            var imagePlaceholder = document.getElementById('image-placeholder'); // 이미지 생성 텍스트
+            var loadingText = document.createElement('p'); // "이미지 생성중" 텍스트 생성
+            loadingText.id = 'loading-text';
+            loadingText.innerText = '이미지 생성중...';
+            loadingText.style.marginTop = '-30px'; // 간격 추가
+
+            // 두 개의 이미지가 모두 선택되었는지 확인
+            if (!selectedImage1.innerHTML.includes('상품 이미지를<br>넣어주세요') &&
+                !selectedImage2.innerHTML.includes('연예인 이미지를<br>넣어주세요')) {
+
+                // "이미지 생성하기 버튼을 눌러주세요" 텍스트 숨기기
+                imagePlaceholder.style.display = 'none';
+
+                // ball-container를 5초 동안 보이게 하기
+                ballContainer.style.display = 'grid';
+
+                // "이미지 생성중..." 텍스트를 ball-container 바로 아래에 추가
+                ballContainer.insertAdjacentElement('afterend', loadingText);
+
+                // 5초 후에 ball-container 숨기고 이미지 및 필터 텍스트 변경
+                setTimeout(function () {
+                    ballContainer.style.display = 'none';
+                    loadingText.remove(); // "이미지 생성중..." 텍스트 제거
+
+                    // 첫 번째 필터를 강제로 적용 (항상 첫 번째 버튼을 선택 상태로 유지)
+                    applyFilter('service-images/F1.gif', 0);
+
+                }, 5000); // 5초 후에 실행
             } else {
-                alert('필터 이미지가 없습니다.');
+                // 이미지가 모두 선택되지 않았을 경우 경고 메시지
+                alert('상품 이미지와 연예인 이미지를 모두 선택해주세요.');
             }
-        }, 5000); // 5초 후에 실행
-    } else {
-        // 이미지가 모두 선택되지 않았을 경우 경고 메시지
-        alert('상품 이미지와 연예인 이미지를 모두 선택해주세요.');
-    }
-}
+        }
 
+        // 페이지가 로드되었을 때 필터 버튼을 비활성화
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterButtons = document.querySelectorAll('.filter-button');
+            filterButtons.forEach(function (button) {
+                button.style.pointerEvents = 'none'; // 클릭 불가하게 설정
+                button.style.opacity = 0.5; // 비활성화된 느낌으로 스타일 변경
+                button.style.cursor = 'not-allowed'; // 클릭할 수 없음을 시각적으로 표현
+            });
+        });
 
+        // 이미지 생성하기 버튼 클릭 후 필터 버튼 활성화
+        function generateImage() {
+            var selectedImage1 = document.getElementById('selectedImage1');
+            var selectedImage2 = document.getElementById('selectedImage2');
+            var ballContainer = document.querySelector('.ball-container');
+            var imagePreviewDiv = document.querySelector('.image-preview');
+            var filterOptions = document.querySelectorAll('.filter-options img');
+            var imagePlaceholder = document.getElementById('image-placeholder'); // 이미지 생성 텍스트
+            var loadingText = document.createElement('p'); // "이미지 생성중" 텍스트 생성
+            loadingText.id = 'loading-text';
+            loadingText.innerText = '이미지 생성중...';
+            loadingText.style.marginTop = '-30px'; // 간격 추가
 
+            // 필터 텍스트 변경 (예: "필터 1 적용됨", "필터 2 적용됨" 등)
+            var filterTexts = document.querySelectorAll('.filter-text');
+            var filterButtons = document.querySelectorAll('.filter-button');
+            var filterMessages = ['원본', '흑백', '로맨틱', '화사하게', '핑크빛', '따뜻하게'];
 
-    
+            // 클릭된 버튼의 인덱스를 저장할 변수
+            let clickedButtonIndex = -1;
+
+            // 두 개의 이미지가 모두 선택되었는지 확인
+            if (!selectedImage1.innerHTML.includes('상품 이미지를<br>넣어주세요') &&
+                !selectedImage2.innerHTML.includes('연예인 이미지를<br>넣어주세요')) {
+
+                // "이미지 생성하기 버튼을 눌러주세요" 텍스트 숨기기
+                imagePlaceholder.style.display = 'none';
+
+                // ball-container를 5초 동안 보이게 하기
+                ballContainer.style.display = 'grid';
+
+                // "이미지 생성중..." 텍스트를 ball-container 바로 아래에 추가
+                ballContainer.insertAdjacentElement('afterend', loadingText);
+
+                // 5초 후에 ball-container 숨기고 이미지 및 필터 텍스트 변경
+                setTimeout(function () {
+                    ballContainer.style.display = 'none';
+                    loadingText.remove(); // "이미지 생성중..." 텍스트 제거
+
+                    // 클릭된 버튼을 제외하고 나머지 버튼들의 이미지를 어둡게 처리하고 텍스트 변경
+                    filterButtons.forEach(function (button, index) {
+                        if (button.classList.contains('clicked')) {
+                            // 클릭된 버튼의 텍스트를 숨기고, 이미지를 그대로 유지
+                            clickedButtonIndex = index; // 클릭된 버튼의 인덱스 저장
+                            filterTexts[index].style.display = 'none'; // 클릭된 버튼의 텍스트 숨기기
+                            button.querySelector('img').style.filter = 'none'; // 클릭된 버튼의 이미지를 그대로 유지
+                        } else {
+                            // 나머지 버튼의 텍스트는 각각 다른 메시지로 설정하고 이미지 어둡게 처리
+                            filterTexts[index].innerText = filterMessages[index];
+                            filterTexts[index].style.display = 'block'; // 나머지 버튼의 텍스트 보이기
+                            button.querySelector('img').style.filter = 'brightness(50%)'; // 나머지 버튼 어둡게 처리
+                        }
+                    });
+
+                    // 필터 버튼 활성화
+                    filterButtons.forEach(function (button) {
+                        button.style.pointerEvents = 'auto'; // 클릭 가능하게 설정
+                        button.style.opacity = 1; // 버튼을 활성화된 상태로 보이게 함
+                        button.style.cursor = 'pointer'; // 클릭 가능 상태로 변경
+                    });
+
+                    // 필터의 첫 번째 이미지를 선택하여 사용
+                    var firstFilterImage = filterOptions[0];
+
+                    if (firstFilterImage) {
+                        // 미리보기 섹션에 이미지 추가
+                        imagePreviewDiv.innerHTML = '<img src="' + firstFilterImage.src + '" alt="Generated Image" style="width:100%; height:auto; border-radius: 8px;">';
+
+                        // 필터 옵션 이미지들 보이게 설정
+                        filterOptions.forEach(function (img) {
+                            img.style.display = 'block'; // 필터 이미지 보이게 설정
+                        });
+                    } else {
+                        alert('필터 이미지가 없습니다.');
+                    }
+                }, 5000); // 5초 후에 실행
+            } else {
+                // 이미지가 모두 선택되지 않았을 경우 경고 메시지
+                alert('상품 이미지와 연예인 이미지를 모두 선택해주세요.');
+            }
+        }
+
         // 우측 사이드바 이미지 클릭 시 경고창
-        document.getElementById('selectedImage1').addEventListener('click', function() {
+        document.getElementById('selectedImage1').addEventListener('click', function () {
             if (this.querySelector('img')) {
                 removeImage('selectedImage1', 'tab1');
             }
         });
-    
-        document.getElementById('selectedImage2').addEventListener('click', function() {
+
+        document.getElementById('selectedImage2').addEventListener('click', function () {
             if (this.querySelector('img')) {
                 removeImage('selectedImage2', 'tab2');
             }
         });
 
+        // 드래그하여 스크롤할 수 있는 기능 추가
+        function enableDragScroll(container, isVertical = false) {
+            let isDown = false;
+            let startX, startY;
+            let scrollLeft, scrollTop;
 
-
-
-// 드래그하여 스크롤할 수 있는 기능 추가
-function enableDragScroll(container, isVertical = false) {
-    let isDown = false;
-    let startX, startY;
-    let scrollLeft, scrollTop;
-
-    container.addEventListener('mousedown', (e) => {
-        isDown = true;
-        container.classList.add('active');
-        startX = e.pageX - container.offsetLeft;
-        startY = e.pageY - container.offsetTop;
-        scrollLeft = container.scrollLeft;
-        scrollTop = container.scrollTop;
-    });
-
-    container.addEventListener('mouseleave', () => {
-        isDown = false;
-        container.classList.remove('active');
-    });
-
-    container.addEventListener('mouseup', () => {
-        isDown = false;
-        container.classList.remove('active');
-    });
-
-    container.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - container.offsetLeft;
-        const y = e.pageY - container.offsetTop;
-        if (isVertical) {
-            // 세로 스크롤 적용
-            const walkY = (y - startY) * 2; // 스크롤 속도 조정
-            container.scrollTop = scrollTop - walkY;
-        } else {
-            // 가로 스크롤 적용
-            const walkX = (x - startX) * 3; // 스크롤 속도 조정
-            container.scrollLeft = scrollLeft - walkX;
-        }
-    });
-}
-
-// 사이드바는 세로 스크롤, 필터 이미지는 가로 스크롤
-document.addEventListener('DOMContentLoaded', function () {
-    const sidebarContainer = document.querySelector('.product-grid'); // 사이드바
-    const filterContainer = document.querySelector('.filter-image-container'); // 중앙 필터
-
-    enableDragScroll(sidebarContainer, true); // 세로 스크롤 적용
-    enableDragScroll(filterContainer, false); // 가로 스크롤 적용
-});
-
-
-
-function downloadImage() {
-    // image-preview 안에 있는 이미지를 찾습니다
-    var imagePreview = document.querySelector('.image-preview img');
-
-    // 이미지가 있는지 확인
-    if (imagePreview) {
-        var imageUrl = imagePreview.src;
-
-        // 이미지를 Blob으로 변환하여 다운로드 처리
-        fetch(imageUrl)
-            .then(function(response) {
-                return response.blob();
-            })
-            .then(function(blob) {
-                var blobUrl = URL.createObjectURL(blob);
-
-                // 다운로드를 위한 가상 링크(a 태그) 생성
-                var link = document.createElement('a');
-                link.href = blobUrl;
-                link.download = 'downloaded-image.jpg'; // 다운로드할 파일 이름 설정
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link); // 다운로드 후 링크 제거
-                URL.revokeObjectURL(blobUrl); // 메모리에서 Blob URL 해제
-            })
-            .catch(function(error) {
-                console.error('이미지 다운로드에 실패했습니다:', error);
+            container.addEventListener('mousedown', (e) => {
+                isDown = true;
+                container.classList.add('active');
+                startX = e.pageX - container.offsetLeft;
+                startY = e.pageY - container.offsetTop;
+                scrollLeft = container.scrollLeft;
+                scrollTop = container.scrollTop;
             });
-    } else {
-        alert("이미지가 없습니다.");
-    }
-}
+
+            container.addEventListener('mouseleave', () => {
+                isDown = false;
+                container.classList.remove('active');
+            });
+
+            container.addEventListener('mouseup', () => {
+                isDown = false;
+                container.classList.remove('active');
+            });
+
+            container.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - container.offsetLeft;
+                const y = e.pageY - container.offsetTop;
+                if (isVertical) {
+                    // 세로 스크롤 적용
+                    const walkY = (y - startY) * 2; // 스크롤 속도 조정
+                    container.scrollTop = scrollTop - walkY;
+                } else {
+                    // 가로 스크롤 적용
+                    const walkX = (x - startX) * 3; // 스크롤 속도 조정
+                    container.scrollLeft = scrollLeft - walkX;
+                }
+            });
+        }
+
+        // 사이드바는 세로 스크롤, 필터 이미지는 가로 스크롤
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarContainer = document.querySelector('.product-grid'); // 사이드바
+            const filterContainer = document.querySelector('.filter-image-container'); // 중앙 필터
+
+            enableDragScroll(sidebarContainer, true); // 세로 스크롤 적용
+            enableDragScroll(filterContainer, false); // 가로 스크롤 적용
+        });
 
 
 
+        function downloadImage() {
+            // image-preview 안에 있는 이미지를 찾습니다
+            var imagePreview = document.querySelector('.image-preview img');
+
+            // 이미지가 있는지 확인
+            if (imagePreview) {
+                var imageUrl = imagePreview.src;
+
+                // 이미지를 Blob으로 변환하여 다운로드 처리
+                fetch(imageUrl)
+                    .then(function (response) {
+                        return response.blob();
+                    })
+                    .then(function (blob) {
+                        var blobUrl = URL.createObjectURL(blob);
+
+                        // 다운로드를 위한 가상 링크(a 태그) 생성
+                        var link = document.createElement('a');
+                        link.href = blobUrl;
+                        link.download = 'downloaded-image.jpg'; // 다운로드할 파일 이름 설정
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link); // 다운로드 후 링크 제거
+                        URL.revokeObjectURL(blobUrl); // 메모리에서 Blob URL 해제
+                    })
+                    .catch(function (error) {
+                        console.error('이미지 다운로드에 실패했습니다:', error);
+                    });
+            } else {
+                alert("이미지가 없습니다.");
+            }
+        }
     </script>
-    
 </body>
 </html>
